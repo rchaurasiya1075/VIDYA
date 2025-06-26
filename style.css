@@ -1,86 +1,65 @@
 /* style.css */
+
 body {
-  background: linear-gradient(to right, #f9c5d1, #9795ef);
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #000428, #004e92);
+  color: white;
+  overflow-x: hidden;
 }
 
-.login-container {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+header {
   text-align: center;
-  max-width: 400px;
+  padding: 20px 0;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 h1 {
-  color: #e91e63;
-  margin-bottom: 20px;
+  font-size: 2.8rem;
+  background: linear-gradient(to right, #ff00cc, #3333ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s infinite alternate;
 }
 
-#question {
-  font-weight: bold;
-  margin-bottom: 10px;
-  font-size: 18px;
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff00cc; }
+  to { text-shadow: 0 0 20px #00fff7; }
 }
 
-input {
-  padding: 10px;
-  border: 1px solid #ccc;
+.slider-container {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  width: 100%;
+}
+
+.slider img {
+  min-width: 100vw;
+  height: 60vh;
+  object-fit: cover;
   border-radius: 10px;
-  width: 90%;
-  margin-bottom: 15px;
 }
 
-button {
-  background-color: #e91e63;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #d81b60;
-}
-
-#message {
-  margin-top: 15px;
-  color: red;
-  font-weight: bold;
-}
-
-/* Slideshow styling */
-.gallery-body {
-  background: #fff0f5;
-  font-family: 'Segoe UI', sans-serif;
+.quote-box {
+  margin-top: 20px;
   text-align: center;
-  padding: 20px;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #ffccff;
+  animation: fadeIn 2s ease-in-out;
 }
 
-.title {
-  color: #d81b60;
-  margin: 20px 0;
-}
-
-.slideshow img {
-  width: 90%;
-  max-width: 600px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  margin-bottom: 15px;
-  transition: 0.5s ease;
-}
-
-.slideshow p {
-  font-size: 20px;
-  font-weight: 500;
-  color: #6a1b9a;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
