@@ -1,19 +1,28 @@
-<!-- main.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>❤️ Our Memories</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Vidya ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
-<body class="gallery-body">
-  <h1 class="title">❤️ Our Lovely Moments ❤️</h1>
-  <div class="slideshow">
-    <img id="photo" src="photos/photo1.jpg" alt="Memory">
-    <p id="quote">You are my sunshine ☀️</p>
-  </div>
+<body>
+  <div class="container">
+    <h1 class="animated-heading">❤️ Welcome to Our Love Memory ❤️</h1>
+    <p class="sub-text">Only for my Vidya — with ❤️ and soul!</p>
 
-  <script src="script.js"></script>
+    <div class="slider-container">
+      <div class="slider" id="photoSlider">
+        <!-- Images will be loaded by JS -->
+      </div>
+    </div>
+
+    <div class="quote-box" id="quoteBox">Loading...</div>
+
+    <footer>
+      <p>&copy; 2025 Made with 💖 for Vidya</p>
+    </footer>
+  </div>
 </body>
 </html>
