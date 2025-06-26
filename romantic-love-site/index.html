@@ -1,21 +1,44 @@
-<!-- index.html -->
+<!-- main.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome My Love 💖</title>
+  <title>Our Memories 💞</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="login-container">
-    <h1>🌸 Just for You 🌸</h1>
-    <p id="question"></p>
-    <input type="text" id="answer" placeholder="Your Answer...">
-    <button onclick="checkAnswer()">Submit</button>
-    <p id="message"></p>
+<body class="gallery-body">
+  <h1 class="title">❤️ Our Lovely Moments ❤️</h1>
+  <div class="slideshow">
+    <img id="photo" src="photos/photo1.jpg" alt="Memory">
+    <p id="quote">You are my sunshine ☀️</p>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const images = [
+      "photos/photo1.jpg", "photos/photo2.jpg", "photos/photo3.jpg",
+      "photos/photo4.jpg", "photos/photo5.jpg"
+      // ... continue up to 38 images
+    ];
+
+    const quotes = [
+      "You are my sunshine ☀️",
+      "Tere bina zindagi se koi shikwa to nahi... 💖",
+      "Every moment with you is a blessing 🌹",
+      "Tum ho to har lamha hai pyara 💑",
+      "Jab tum saamne hoti ho to duniya ruk jati hai ✨"
+      // ... 38 quotes
+    ];
+
+    let i = 0;
+    const photo = document.getElementById('photo');
+    const quote = document.getElementById('quote');
+
+    setInterval(() => {
+      i = (i + 1) % images.length;
+      photo.src = images[i];
+      quote.innerText = quotes[i % quotes.length];
+    }, 4000);
+  </script>
 </body>
 </html>
