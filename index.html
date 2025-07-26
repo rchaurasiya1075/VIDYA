@@ -3,133 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For My Love ❤️</title>
+  <title>Love of My Life ❤️</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffe6f0, #ffe6ff);
-      color: #4b004b;
+      background: linear-gradient(to bottom right, #ffdee9, #b5fffc);
+      overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 1.5rem;
-      background-color: #ffcce0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    header h1 {
-      margin: 0;
+      padding: 20px;
       font-size: 2rem;
+      color: #ff0066;
+      text-shadow: 1px 1px 2px #00000060;
     }
 
-    .content {
+    .container {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: row;
       justify-content: center;
       align-items: flex-start;
-      padding: 2rem;
-      gap: 2rem;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
     }
 
     .video-frame {
-      width: 360px;
-      height: 640px;
+      border: 10px solid #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transform: rotateY(5deg);
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 0 30px rgba(255, 0, 102, 0.4);
-      transform: rotateY(10deg) rotateX(2deg);
-      transition: transform 0.5s ease-in-out;
+      max-width: 90vw;
     }
 
-    .video-frame:hover {
-      transform: rotateY(0deg);
-    }
-
-    .video-frame video {
+    video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
     }
 
-    .shayari-box {
+    .shayari {
       max-width: 400px;
-      background: #fff0f5;
-      border-left: 6px solid #ff66a3;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+      padding: 20px;
+      background: #ffffffaa;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       font-size: 1.2rem;
+      color: #ff1493;
+      font-weight: bold;
       line-height: 1.8;
-    }
-
-    .shayari-box::before {
-      content: "💌 ";
-      font-size: 1.5rem;
     }
 
     audio {
       display: none;
     }
-
-    @media (max-width: 768px) {
-      .content {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .video-frame {
-        transform: none;
-      }
-    }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>मेरे दिल की रानी 👑 के लिए</h1>
+    Love of My Life 💖
   </header>
 
-  <!-- Auto-play background audio -->
-  <audio id="bg-audio" autoplay loop>
-    <source src="media/WhatsApp Audio 2025-07-26 at 23.12.58.mpeg" type="audio/mp3" />
-    Your browser does not support the audio element.
-  </audio>
-
-  <div class="content">
-    <!-- 3D Video Frame -->
+  <div class="container">
     <div class="video-frame">
-      <video id="love-video" autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline>
         <source src="media/WhatsApp Video 2025-07-26 at 23.24.47.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
 
-    <!-- Hindi Love Shayari -->
-    <div class="shayari-box">
-      जब भी तुझे देखता हूँ, दिल कहता है,<br/>
-      तू ही वो वजह है जिससे मैं मुस्कुराता हूँ।<br/><br/>
-      तेरी हँसी, तेरी बातें, तेरा नाम,<br/>
-      मेरे लिए सबसे खास बन चुका है ये हर एक पल।<br/><br/>
-      तू है तो सबकुछ है,<br/>
-      तू ना हो तो अधूरा हूँ मैं ❤️
+    <div class="shayari">
+      तुमसे मिलकर ऐसा लगा<br>
+      जैसे ज़िंदगी मिल गई हो!<br><br>
+      तेरी हँसी मेरी दुनिया है,<br>
+      तेरी ख़ुशी मेरी बंदगी है 💕<br><br>
+      तुझे देखूं तो लगता है,<br>
+      मेरी सारी दुआएँ कबूल हो गईं 🌹
     </div>
   </div>
 
-  <script>
-    // Force audio to play (in some browsers)
-    window.addEventListener('load', () => {
-      const audio = document.getElementById('bg-audio');
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log("Auto-play blocked. Waiting for user interaction.");
-        });
-      }
-    });
-  </script>
-
+  <audio autoplay loop>
+    <source src="media/song.mp3" type="audio/mp3" />
+    Your browser does not support the audio tag.
+  </audio>
 </body>
 </html>
