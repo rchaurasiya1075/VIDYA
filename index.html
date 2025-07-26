@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For My Love ❤️</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
@@ -72,8 +71,7 @@
     }
 
     audio {
-      display: block;
-      margin: 2rem auto 0 auto;
+      display: none;
     }
 
     @media (max-width: 768px) {
@@ -81,6 +79,7 @@
         flex-direction: column;
         align-items: center;
       }
+
       .video-frame {
         transform: none;
       }
@@ -93,33 +92,44 @@
     <h1>मेरे दिल की रानी 👑 के लिए</h1>
   </header>
 
-  <!-- Audio Player -->
-  <audio controls autoplay loop>
-    <source src="media/songlove.mp3" type="audio/mp3" />
+  <!-- Auto-play background audio -->
+  <audio id="bg-audio" autoplay loop>
+    <source src="media/WhatsApp Audio 2025-07-26 at 23.12.58.mpeg" type="audio/mp3" />
     Your browser does not support the audio element.
   </audio>
 
   <div class="content">
     <!-- 3D Video Frame -->
     <div class="video-frame">
-      <video autoplay muted loop controls>
+      <video id="love-video" autoplay muted loop playsinline>
         <source src="media/WhatsApp Video 2025-07-26 at 23.24.47.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
 
-    <!-- Hindi Shayari -->
+    <!-- Hindi Love Shayari -->
     <div class="shayari-box">
-      जब भी तुझे देखता हूँ, दिल कहता है,  
-      तू ही वो वजह है जिससे मैं मुस्कुराता हूँ।  
-      <br><br>
-      तेरी हँसी, तेरी बातें, तेरा नाम,  
-      मेरे लिए सबसे खास बन चुका है ये हर एक पल।  
-      <br><br>
-      तू है तो सबकुछ है,  
+      जब भी तुझे देखता हूँ, दिल कहता है,<br/>
+      तू ही वो वजह है जिससे मैं मुस्कुराता हूँ।<br/><br/>
+      तेरी हँसी, तेरी बातें, तेरा नाम,<br/>
+      मेरे लिए सबसे खास बन चुका है ये हर एक पल।<br/><br/>
+      तू है तो सबकुछ है,<br/>
       तू ना हो तो अधूरा हूँ मैं ❤️
     </div>
   </div>
+
+  <script>
+    // Force audio to play (in some browsers)
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('bg-audio');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("Auto-play blocked. Waiting for user interaction.");
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
