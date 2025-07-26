@@ -5,172 +5,180 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For My Love ❤️</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #000;
+      color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle, #ffe6f0, #ffd6e8);
-      overflow-x: hidden;
+      overflow: hidden;
       position: relative;
     }
-
-    .video-frame {
-      margin: 40px auto 10px;
-      width: 320px;
-      height: 180px;
-      border: 10px solid #ff99cc;
-      border-radius: 30px;
-      box-shadow: 0 0 20px rgba(255, 0, 128, 0.6);
-      overflow: hidden;
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(to right, #ff0066, #ff66cc);
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 2px 10px rgba(255, 0, 102, 0.4);
     }
-
-    .video-frame video {
+    header small {
+      display: block;
+      font-size: 1rem;
+      font-weight: normal;
+      margin-top: 5px;
+    }
+    .video-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 0, 102, 0.8);
     }
-
     .shayari-box {
-      margin: 20px auto;
-      width: 90%;
-      max-width: 600px;
-      font-size: 20px;
-      background: #fff0f5;
-      color: #c2185b;
-      padding: 15px;
-      border-radius: 15px;
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
       text-align: center;
-      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+      font-size: 1.2rem;
+      color: #ffccff;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      font-weight: bold;
     }
-
     .emoji {
       position: absolute;
-      animation: float 6s linear infinite;
-      font-size: 24px;
-      z-index: 1;
+      font-size: 2rem;
+      animation: float 5s infinite;
+      opacity: 0.7;
     }
-
     @keyframes float {
-      0% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh);
-        opacity: 0;
-      }
+      0% { transform: translateY(100vh) scale(1); }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
     }
-
-    #touchOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(255, 182, 193, 0.8);
-      color: #c2185b;
-      font-size: 28px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      cursor: pointer;
+    #touchText {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1.5rem;
+      background-color: rgba(0,0,0,0.7);
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div id="touchOverlay" onclick="initPlay()">Touch to Play the Song</div>
+  <header>
+    My Love Line 💗
+    <small>1. सच्चा प्यार वो नहीं जो सिर्फ दुनिया को दिखाया जाए, बल्कि वो है जो दिल से निभाया जाए।<br>2. प्यार एक अहसास है, जो लफ़्ज़ों से नहीं दिल से बयां होता है।</small>
+  </header>
 
-  <div class="video-frame">
-    <video src="media/WhatsApp Video 2025-07-26 at 23.24.47.mp4" autoplay muted loop playsinline></video>
+  <div class="video-container">
+    <video autoplay loop muted playsinline id="bgVideo">
+      <source src="media/WhatsApp Video 2025-07-26 at 23.24.47.mp4" type="video/mp4">
+    </video>
+    <div class="shayari-box" id="shayariBox"></div>
+    <div id="touchText">Touch anywhere to play the song 🎵</div>
   </div>
 
-  <div class="shayari-box" id="shayariBox">Tum meri har dua mein ho 💕</div>
-
-  <audio id="bgMusic" src="media/WhatsApp Audio 2025-07-26 at 23.50.03.aac"></audio>
+  <audio id="bgAudio" src="media/WhatsApp Audio 2025-07-26 at 23.50.03.aac" type="audio/aac"></audio>
 
   <script>
-    const shayaris = [
-      "Tum meri har dua mein ho 💕",
-      "Tere bina adhura hoon main ❤️",
-      "Tum mile to zindagi suhaani lagti hai 💖",
-      "Pyar tumse itna hai ke har pal tumhara intezaar rehta hai 💘",
-      "Tum meri muskurahat ho, tum meri shaan ho 💞",
-      "Mujhe har pal sirf tera hi khayal aata hai 💓",
-      "Jab tum pass hote ho, dil ko sukoon milta hai 💗",
-      "Tere bina zindagi adhoori lagti hai 💔",
-      "Tujhse hi roshan hai meri duniya 🌟",
-      "Mera pyaar sirf tere liye hai, hamesha ke liye 💖",
-      "Dil karta hai bas tujhme hi kho jaaun 💑",
-      "Mere sapne sirf tumse shuru aur tumpe khatam hote hain 💞",
-      "Tere hone se zindagi khubsurat lagti hai 🌸",
-      "Tera saath mere liye sab kuch hai 💕",
-      "Tum meri khushi ka sabab ho 💓",
-      "Main har janam mein tumhe hi chahunga 💘",
-      "Tujhme basi meri saari khushiyaan hain 💐",
-      "Har pal tu mere saath ho, yahi dua hai 💖",
-      "Teri ek muskurahat meri duniya badal deti hai 😊",
-      "Tumhara pyaar meri sabse badi taqat hai 💪❤️",
-      "Mujhse juda na hona kabhi bhi 💕",
-      "Har khushi mein tera naam likha ho 💝",
-      "Tere sang jeevan sukhmay ho 💑",
-      "Tere bina sab kuch adhoora hai 😔",
-      "Tumse juda hokar bhi tumhare kareeb rehna chahta hoon 💓",
-      "Dil sirf tumhara deewana hai 💘",
-      "Tere saath bitaya har pal yaadgar hai 💖",
-      "Tere pyaar mein main sab kuch bhool jata hoon 💞",
-      "Tumse bepanah mohabbat karta hoon ❤️",
-      "Tere bina main kuch bhi nahi hoon 💔",
-      "Tere aane se khushbu aayi hai jeevan mein 🌹",
-      "Tu meri duniya hai 💖",
-      "Tum meri zindagi ka haseen pal ho 💘",
-      "Jab se tum mile ho, har cheez khubsoorat lagti hai 💞",
-      "Tumhara haath tham kar jeevan bitaana hai 💕",
-      "Tere naina mujhe jeene ki wajah dete hain 💓",
-      "Tere saath har mod par chalna hai 💝",
-      "Har pal tere liye dua karta hoon 💘",
-      "Tumse door rehna namumkin hai 💔",
-      "Mujhe har pal sirf tera intezaar rehta hai 💖",
-      "Tere saath har pal ek kahani ban jaata hai 💞",
-      "Tujhse mohabbat meri har sans mein hai 💓",
-      "Tum meri aankhon ka noor ho 💘",
-      "Tere bina adhura sa lagta hoon 💔",
-      "Tum meri zindagi ka sabse pyara hissa ho 💖",
-      "Har din tera naam le kar din shuru karta hoon 🌞",
-      "Tum mere sapno ki rani ho 👑",
-      "Bas tu saath ho, aur kuch nahi chahiye 💕",
-      "Tumhara pyaar meri zindagi ka noor hai 🌟"
-    ];
-
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % shayaris.length;
-      document.getElementById("shayariBox").textContent = shayaris[index];
-    }, 5000);
-
-    function initPlay() {
-      const music = document.getElementById("bgMusic");
-      music.volume = 1;
-      music.play();
-      document.getElementById("touchOverlay").style.display = "none";
-    }
-
-    // Love emoji animation
+    const emojis = ['💋','❤️','😘','😍','💖','💕','💘','🌸'];
     function createEmoji() {
-      const emojis = ["💖", "💘", "💋", "❤️", "💕"];
-      const emoji = document.createElement("div");
-      emoji.className = "emoji";
-      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = Math.random() * 100 + "vw";
-      emoji.style.top = "100vh";
-      emoji.style.fontSize = Math.random() * 20 + 24 + "px";
+      const emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
       document.body.appendChild(emoji);
-      setTimeout(() => document.body.removeChild(emoji), 6000);
+      setTimeout(() => emoji.remove(), 5000);
     }
-    setInterval(createEmoji, 600);
+    setInterval(createEmoji, 500);
+
+    const shayariList = [
+      "तेरे बिना अधूरी है ज़िंदगी मेरी ❤️",
+      "तू मिल जाए तो मुकम्मल हो जाऊं मैं 😘",
+      "तू है तो हर खुशी है मुझे 😍",
+      "पल पल तेरा साथ चाहिए 💑",
+      "सपनों में भी तेरा ही नाम आता है 💕",
+      "तेरे साथ हर पल खास है 💖",
+      "तू जो मुस्कुरा दे तो सारी दुनिया हसीन लगे 😊",
+      "तेरे बिना हर खुशी अधूरी है 💔",
+      "सच्चा प्यार हर किसी को नहीं मिलता 💞",
+      "तेरा साथ है तो डर कैसा 💪",
+      "मेरा दिल सिर्फ तेरा है ❤️",
+      "तू ही मेरी दुनिया, तू ही मेरा जहान 🌍",
+      "तेरे बिना जीना मुश्किल है 🥺",
+      "तू पास हो तो सब अच्छा लगता है 😇",
+      "हमसफर बन जाओ ज़िंदगी के लिए 💍",
+      "तेरा इंतजार ही तो मुझे ज़िंदा रखे है ⏳",
+      "तू जो है तो सबकुछ है 💓",
+      "तेरा नाम ही मेरा सुकून है 🕊️",
+      "हर सांस में तेरा एहसास है 🌬️",
+      "तेरे बिना अधूरा हूं मैं 💔",
+      "तेरे ख्वाबों में ही सुकून है 😴",
+      "तेरे साथ बिताया हर पल अमूल्य है 💫",
+      "तेरे बिना मेरी दुनिया अधूरी है 🌌",
+      "तेरा साथ चाहिए ज़िंदगी भर के लिए 🔒",
+      "तू है तो मैं हूं 🙈",
+      "तेरे बिना सब सुना लगता है 🌙",
+      "तेरी हर बात दिल को छू जाती है 💬",
+      "प्यार सिर्फ तुमसे है, और हमेशा रहेगा 🥰",
+      "तू मेरी पहली और आखिरी मोहब्बत है 💍",
+      "तेरे बिना ना दिन चढ़ता है, ना रात ढलती है 🌄",
+      "मुझे तुझसे प्यार है, बेशुमार 💕",
+      "तेरा होना ही मेरे जीने की वजह है 💖",
+      "हर सुबह तुझे देखने की ख्वाहिश होती है ☀️",
+      "तेरा स्पर्श ही जादू है 🔮",
+      "तेरे साथ हर चीज़ हसीन लगती है 🌸",
+      "तेरे बिना ये दिल अधूरा सा है 💔",
+      "तेरे नाम से शुरू होती है मेरी सुबह 🌞",
+      "हर ख्वाब में बस तू ही आता है 🌙",
+      "तू ही तो है मेरे दिल की धड़कन 💓",
+      "तेरे होने से ही ये दिल धड़कता है ❤️",
+      "तेरे बिना मैं कुछ भी नहीं 😢",
+      "तेरा साथ चाहिए हर जनम में 🔁",
+      "तेरी हंसी ही मेरी जान है 😍",
+      "तेरा चेहरा सबसे प्यारा है 😘",
+      "तेरे प्यार ने मुझे बदल दिया है 💘",
+      "तू मेरी ज़िंदगी का सबसे खूबसूरत हिस्सा है 💗",
+      "तेरे बिना ये मौसम भी सुना है 🍂",
+      "तेरे ख्यालों में ही खोया रहता हूं 🌠",
+      "तेरे बिना मैं अधूरा हूं 🧩",
+      "तेरे साथ ही सबकुछ है, तेरे बिना कुछ भी नहीं 🔐"
+    ];
+    let current = 0;
+    const shayariBox = document.getElementById('shayariBox');
+    function updateShayari() {
+      shayariBox.innerText = shayariList[current];
+      current = (current + 1) % shayariList.length;
+    }
+    setInterval(updateShayari, 5000);
+    updateShayari();
+
+    const bgAudio = document.getElementById('bgAudio');
+    const touchText = document.getElementById('touchText');
+    document.body.addEventListener('click', () => {
+      bgAudio.play();
+      touchText.style.display = 'none';
+    });
   </script>
 </body>
 </html>
