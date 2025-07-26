@@ -3,183 +3,189 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Love Line</title>
+  <title>My Love Line ❤️</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9f3f3;
-      overflow: hidden;
+      background: #0d0d0d;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
     }
+
     header {
       text-align: center;
-      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-      padding: 1rem 0 0.5rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      position: relative;
+      padding: 1rem;
+      background: #1a1a1a;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
     }
+
     header h1 {
       margin: 0;
       font-size: 2rem;
-      color: #d60052;
+      color: #ff4da6;
     }
-    header p {
-      font-style: italic;
-      color: #7a003c;
-      margin: 0.3rem 0;
+
+    .sub-lines {
+      text-align: center;
+      color: #ffccff;
+      font-size: 1rem;
+      margin-top: 0.5rem;
     }
+
     .video-container {
       position: relative;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
       display: flex;
-      justify-content: center;
       align-items: center;
-      background: radial-gradient(circle, #fff 0%, #ffe3e3 100%);
-      box-shadow: inset 0 0 30px rgba(0,0,0,0.2);
+      justify-content: center;
+      background: #111;
     }
-    .video-container video {
-      height: 100vh;
-      max-width: 100vw;
-      border-radius: 2rem;
-      box-shadow: 0 0 20px rgba(255, 0, 98, 0.4);
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
     }
-    .quote-box {
+
+    .shayari-box {
       position: absolute;
-      bottom: 20px;
+      bottom: 10%;
       width: 100%;
       text-align: center;
       font-size: 1.2rem;
-      font-weight: bold;
-      color: #b3004d;
-      background: rgba(255,255,255,0.6);
-      padding: 10px;
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
+      color: #ffe6f0;
+      text-shadow: 1px 1px 4px #000;
+      padding: 0 1rem;
     }
-    .love-symbol {
+
+    .emoji {
       position: absolute;
       font-size: 2rem;
-      animation: float 6s infinite;
+      animation: float 6s infinite ease-in-out;
       pointer-events: none;
+      z-index: 999;
     }
+
     @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
     }
-    #touch-text {
+
+    .touch-text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 1.2rem;
       background: rgba(0,0,0,0.6);
-      color: white;
-      padding: 20px 40px;
-      border-radius: 15px;
-      font-size: 1.5rem;
-      text-align: center;
-      z-index: 15;
-      cursor: pointer;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      z-index: 999;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>My Love Line</h1>
-    <p>Sachcha Pyaar Kahi Bhi, Kabhi Bhi Mil Sakta Hai</p>
-    <p>Jis Dil Mein Mohabbat Hoti Hai, Usmein Bhi Khuda Rehta Hai</p>
+    <div class="sub-lines">Sachcha pyaar lafzon se nahi, ehsaason se hota hai.<br />Jo dil se nikle wohi mohabbat hoti hai.</div>
   </header>
 
   <div class="video-container">
-    <video id="loveVideo" src="media/WhatsApp Video 2025-07-26 at 23.24.47.mp4" autoplay muted loop playsinline></video>
-    <div class="quote-box" id="shayariBox">Tum meri zindagi ki wo muskaan ho, jise main har pal mehsoos karta hoon 💖</div>
-    <div id="touch-text">Touch anywhere to play the song</div>
+    <video id="myVideo" src="media/WhatsApp Video 2025-07-26 at 23.24.47.mp4" autoplay muted loop playsinline></video>
+    <div class="shayari-box" id="shayariBox">Tum meri zindagi ki wo khushi ho, jo har pal mere saath hai.</div>
+    <div class="touch-text" id="touchText">Touch anywhere to play the song</div>
   </div>
 
+  <audio id="bgAudio" src="media/WhatsApp Audio 2025-07-26 at 23.50.03.aac" preload="auto"></audio>
+
   <script>
-    const shayari = [
-      "Tum meri zindagi ki wo muskaan ho, jise main har pal mehsoos karta hoon 💖",
-      "Mohabbat ek ehsaas hai, jo har dil ko mehka deta hai ❤️",
-      "Tere bina adhura hoon main, jaise chand ke bina raat 🌙",
-      "Tujh mein hi meri duniya simat gayi hai 💫",
-      "Har pal teri yaadon mein jeeta hoon main 💕",
-      "Tere naam se dhadakne laga hai dil mera 💓",
-      "Tu jo saath ho toh har gham bhi asaan lagta hai 💑",
-      "Pyaar sirf lafzon ka mohtaj nahi hota, ehsaas sab kuch keh jaate hain 💌",
-      "Teri har ek muskurahat meri duniya hai 😊",
-      "Tum meri har dua ka asar ho 🙏",
-      "Tujhme basa hai mera pyaar, meri zindagi 💝",
-      "Bas tu hi tu chahiye har subah har shaam 🌅",
-      "Pyar woh ehsaas hai jo har saans mein mehsoos hota hai 💞",
-      "Teri khushi meri khushi hai 💓",
-      "Jab tu saath ho toh zindagi khoobsurat lagti hai 🌸",
-      "Tere liye kuch bhi kar jaaun main 💗",
-      "Tu jo paas ho toh sab kuch apna lagta hai ❤️",
-      "Teri hansi meri jaan hai 💖",
-      "Teri yaadon mein hi zindagi behti jaa rahi hai 🕊️",
-      "Tu hai toh sab kuch hai 💓",
-      "Mujhse juda hoke bhi tu meri har saans mein hai 💘",
-      "Zindagi tu hai, pyaar tu hai 💑",
-      "Main tujhmein kho gaya hoon 💞",
-      "Tu bin adhoora lagta hoon main 💔",
-      "Tera saath har gham ko mitata hai ❤️",
-      "Tujh se milke har pal sukoon milta hai 🕊️",
-      "Pyaar ki misaal ho tum ❤️",
-      "Dil mein basa hai sirf tera naam 💘",
-      "Tumhara pyaar meri taqat hai 💪",
-      "Aankhon mein tu, khwabon mein tu 🌙",
-      "Tere pyaar ne zindagi khubsurat bana di 💕",
-      "Tere bina kuch bhi adhura hai 💔",
-      "Tere saath har pal khaas hai 💖",
-      "Pyar mein do dil ek ho jaate hain 💓",
-      "Tera intezaar sabse pyara lagta hai 💕",
-      "Tere bina toh sab kuch suna suna lagta hai 😔",
-      "Tu jo mila toh lagta hai sab kuch mil gaya 💘",
-      "Main har roz tujhse aur zyada mohabbat karta hoon 💑",
-      "Mujhe sirf tera saath chahiye, bas aur kuch nahi 💖",
-      "Teri baatein mere dil ko chhoo jaati hain 💓",
-      "Tere hothon ki muskan meri duniya hai 😊",
-      "Tu hai toh har lamha pyara hai 💕",
-      "Tere saath hi meri duniya sajti hai 💑",
-      "Tum meri mohabbat ho aur hamesha rahogi 💘",
-      "Pyaar wo jazba hai jo lafzon mein nahi bayaan hota ❤️",
-      "Tu meri duniya hai, meri khushi hai 💗",
-      "Har pal main tera intezar karta hoon 💕",
-      "Tu bin zindagi adhoori hai 💔",
-      "Tera chehra meri aankhon mein basa rehta hai 💖",
-      "Tere pyaar mein sab kuch bhool jaata hoon 💓"
+    const shayaris = [
+      "Tum meri zindagi ki wo khushi ho, jo har pal mere saath hai.",
+      "Pyar wo nahi jo duniya ko dikhaya jaye, pyar wo hai jo dil se nibhaya jaye.",
+      "Teri muskurahat meri pehchan hai.",
+      "Har sans mein tera naam hai.",
+      "Main jeeta hoon sirf tere liye.",
+      "Tum mile to zindagi mein rang aa gaya.",
+      "Tujh mein hi basa hai mera jahan.",
+      "Tera saath meri har khushi ka sabab hai.",
+      "Mujhse juda hoke bhi tu meri saanson mein hai.",
+      "Main tujhe har din aur bhi zyada chahta hoon.",
+      "Tum meri har dua mein shamil ho.",
+      "Pyaar wahi hai jo har lamha mehsoos ho.",
+      "Tere bina kuch bhi adhura lagta hai.",
+      "Meri har khushi teri muskurahat se judi hai.",
+      "Tera naam le kar hi meri subah hoti hai.",
+      "Tu meri har khushi ka raaz hai.",
+      "Main tere bina jee nahi sakta.",
+      "Tujhse mila to pata chala pyaar kya hota hai.",
+      "Tere saath har lamha sukoon deta hai.",
+      "Tu hai to sab kuch hai.",
+      "Tera pyaar hi meri zindagi hai.",
+      "Tum ho to sab kuch acha lagta hai.",
+      "Tujh mein hi mera sukoon chhupa hai.",
+      "Main har din tujhe yaad karta hoon.",
+      "Tere bina sab kuch bekar lagta hai.",
+      "Mujhe tujhse juda hona manzoor nahi.",
+      "Tere saath zindagi ek sapna lagti hai.",
+      "Tum ho to main hoon.",
+      "Tere bina sab kuch suna suna hai.",
+      "Mujhse pyar karne ke liye shukriya.",
+      "Tera har pal mere dil ke kareeb hai.",
+      "Pyar mein sab kuch bhool jaata hoon.",
+      "Tumse juda rehna asambhav hai.",
+      "Main har pal tumhara intezaar karta hoon.",
+      "Tera pyaar meri rooh mein basa hai.",
+      "Tere hone se hi zindagi hai.",
+      "Tujhse door rehkar bhi tu mere paas hai.",
+      "Meri zindagi teri mohabbat se roshan hai.",
+      "Main sirf tera hoon.",
+      "Tere bina main adhoora hoon.",
+      "Tu meri sabse khoobsurat soch hai.",
+      "Main har raat tujhe sochta hoon.",
+      "Tera saath meri zindagi ka sabse khoobsurat hissa hai.",
+      "Tera pyaar har dard ka ilaaj hai.",
+      "Tere bina main kuch bhi nahi.",
+      "Tum ho to har dard meetha lagta hai.",
+      "Main tujhmein hi jeeta hoon.",
+      "Tu meri har dua ka jawab hai.",
+      "Meri har saans tujhmein basa hai."
     ];
 
-    let index = 0;
+    let shayariIndex = 0;
     setInterval(() => {
-      index = (index + 1) % shayari.length;
-      document.getElementById('shayariBox').innerText = shayari[index];
+      shayariIndex = (shayariIndex + 1) % shayaris.length;
+      document.getElementById('shayariBox').textContent = shayaris[shayariIndex];
     }, 5000);
 
-    // Floating hearts
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'love-symbol';
-      heart.innerText = ['💋','💘','💖','💞','💗','❤️','💕','😘'][Math.floor(Math.random()*8)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.top = '100vh';
-      heart.style.animationDuration = (4 + Math.random()*4) + 's';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 8000);
+    // Love emoji animation
+    function createEmoji() {
+      const emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.textContent = ['💋','❤️','😘','💖','😍'][Math.floor(Math.random() * 5)];
+      emoji.style.left = Math.random() * 100 + 'vw';
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 6000);
     }
-    setInterval(createHeart, 500);
+    setInterval(createEmoji, 500);
 
-    // Audio play on touch
-    const touchText = document.getElementById("touch-text");
-    const audio = new Audio("media/WhatsApp Audio 2025-07-26 at 23.50.03.aac");
-    audio.volume = 1;
-    document.body.addEventListener("click", () => {
-      audio.play();
-      touchText.remove();
-    }, { once: true });
+    // Touch to play
+    document.body.addEventListener('click', () => {
+      document.getElementById('bgAudio').play();
+      document.getElementById('touchText').style.display = 'none';
+    });
   </script>
 </body>
 </html>
