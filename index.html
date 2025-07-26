@@ -2,117 +2,134 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Love of My Life ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love ❤️</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #ffdee9, #b5fffc);
+      background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+      color: #333;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 20px;
-      font-size: 2.2rem;
-      color: #ff0066;
-      text-shadow: 1px 1px 2px #00000060;
+      padding: 2rem;
+      font-size: 2rem;
+      color: #d63384;
     }
 
-    .container {
+    .video-shayari-container {
       display: flex;
-      flex-direction: row;
       justify-content: center;
-      align-items: flex-start;
-      gap: 20px;
+      align-items: center;
       flex-wrap: wrap;
-      padding: 20px;
-    }
-
-    .video-frame {
-      border: 10px solid #fff;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      transform: rotateY(5deg);
-      border-radius: 20px;
-      overflow: hidden;
-      max-width: 90vw;
+      gap: 2rem;
+      padding: 2rem;
     }
 
     video {
-      width: 100%;
-      height: auto;
-      display: block;
+      width: 300px;
+      height: 500px;
+      border: 8px ridge #ff69b4;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      object-fit: cover;
     }
 
-    .shayari {
-      max-width: 400px;
-      padding: 20px;
-      background: #ffffffaa;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      font-size: 1.3rem;
-      color: #ff1493;
-      font-weight: bold;
-      line-height: 1.8;
-      transition: opacity 1s ease;
-      min-height: 220px;
-    }
-
-    audio {
-      display: none;
+    .shayari-box {
+      width: 300px;
+      font-size: 1.2rem;
+      font-style: italic;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: all 0.5s ease-in-out;
     }
   </style>
 </head>
 <body>
   <header>
-    Love of My Life 💖
+    To My Love ❤️ - You Are My Life
   </header>
 
-  <div class="container">
-    <div class="video-frame">
-      <video autoplay muted loop playsinline>
-        <source src="media/WhatsApp Video 2025-07-26 at 23.24.47.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
-    <div class="shayari" id="shayariBox">
-      तुमसे मिलकर ऐसा लगा<br>जैसे ज़िंदगी मिल गई हो!
+  <div class="video-shayari-container">
+    <video autoplay muted loop playsinline>
+      <source src="media/WhatsApp Video 2025-07-26 at 23.24.47.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="shayari-box" id="shayari-box">
+      Tum meri har dua mein ho... ❤️
     </div>
   </div>
 
   <audio autoplay loop>
     <source src="media/WhatsApp Audio 2025-07-26 at 23.12.58.mpeg" type="audio/mpeg" />
-    Your browser does not support the audio tag.
+    Your browser does not support the audio element.
   </audio>
 
   <script>
-    const shayaris = [
-      "तुमसे मिलकर ऐसा लगा<br>जैसे ज़िंदगी मिल गई हो!",
-      "तेरी हर मुस्कान में मेरी जान बसी है ❤️",
-      "तू जब पास होती है तो सब कुछ अच्छा लगता है 🌸",
-      "तेरे बिना अब तो जीना मुश्किल सा लगता है 💔",
-      "तुम हो तो सब कुछ है, वरना कुछ भी नहीं...",
-      "मेरी हर सुबह तुम्हारे नाम से होती है 🌞",
-      "तेरी हँसी मेरे दिन की शुरुआत है 😍",
-      "तुझसे जुड़ा हर लम्हा बहुत खास है 💞",
-      "तेरा नाम मेरे हर साँस में है ✨",
-      "तू है तो हर मौसम प्यारा लगता है 🌦️",
-      "तेरी बातें मेरे दिल को छू जाती हैं 🥹",
-      "तुझसे दूर रहना सज़ा से कम नहीं 😢",
-      "तेरी आँखों में सच्चा प्यार दिखता है 🫶",
-      "मुझे तुझसे मोहब्बत है बेपनाह 💘",
-      "तेरे साथ बिताया हर पल यादगार है 📸",
-      "तेरे बिना अधूरी है मेरी कहानी 📖",
-      "तेरी आवाज़ सुकून देती है 🎶",
-      "तेरे लिए कुछ भी कर सकता हूँ मैं 🛐",
-      "तेरा साथ मेरी सबसे बड़ी खुशी है 😇",
-      "तेरी हँसी में जादू है 🎉",
-      "तेरे चेहरे पर रब का नूर है 🌟",
-      "तू है तो अंधेरे भी रोशन लगते हैं 🔥",
-      "तू मेरी तन्हाई का सबसे प्यारा साथी है 🌙",
-      "तेरे प्यार में डूब जाना चाहता हूँ 💦",
-      "तेरे होंठों की मुस्कान मेरी जान है 😚",
-      "तू ही है जिसकी मैं इबादत करता हूँ 🕌"
+    const shayariList = [
+      "Tum meri har dua mein ho ❤️",
+      "Tere bina adhura hoon main 💔",
+      "Tera muskuraana meri pehchaan hai 😊",
+      "Zindagi sirf tere saath achi lagti hai 🥰",
+      "Mujhe teri har baat pyaari lagti hai 💕",
+      "Tum ho to sab kuch hai 💖",
+      "Tere khayalon mein hi jee leta hoon 🌙",
+      "Pyar sirf tumse hi hai ❤️",
+      "Mujhse juda mat hona kabhi 😢",
+      "Dil tumhara hai, jaan bhi tumhari",
+      "Tum mere sapno ki rani ho 👑",
+      "Jab tum hansti ho to dil jeet leti ho 😍",
+      "Tere bina zindagi adhuri lagti hai 💔",
+      "Bas tumhara saath chahiye hamesha",
+      "Tum meri muskaan ho 💫",
+      "Dil karta hai tumhe pal pal dekhta rahu 💘",
+      "Pyaar tumse shuru, tumpe hi khatam 💞",
+      "Tumhara naam sunte hi chehra khil uthta hai 🌸",
+      "Meri duniya ho tum ❤️",
+      "Jitni baar dekhu kam lagti ho ✨",
+      "Tere saath har lamha suhana hai",
+      "Tera intezaar karte karte zindagi beet gayi",
+      "Har pal tere khayalon mein dooba rehta hoon",
+      "Tere bina kuch acha nahi lagta",
+      "Main har dua mein tumhe maangta hoon",
+      "Tumhari aankhen meri jaan hai",
+      "Tum ho to zindagi gulzar hai",
+      "Sirf tum par yakeen hai mujhe",
+      "Tum meri aadat ban chuki ho",
+      "Tumhare bina kuch adhura hai",
+      "Tum meri pehli mohabbat ho",
+      "Tera saath sab kuch hai mere liye",
+      "Tum meri har subah ho",
+      "Main har pal tumse mohabbat karta hoon",
+      "Tere bina main kuch nahi",
+      "Tumhari har baat yaad rehti hai",
+      "Tum meri aankhon ka noor ho",
+      "Bas tum chahiye mujhe hamesha",
+      "Tere bina waqt nahi guzarta",
+      "Main sirf tumhara hoon",
+      "Teri muskurahat meri jaan hai",
+      "Tum ho to sab kuch hai",
+      "Tere saath jeene ki tamanna hai",
+      "Tere bina jeena nahi aata",
+      "Bas ek pal tere saath chahiye",
+      "Har janam mein tum chahiye",
+      "Tere bina zindagi adhuri hai",
+      "Tum meri duniya ho",
+      "Pyaar tumse bepanah hai 💘"
+    ];
+
+    let index = 0;
+    setInterval(() => {
+      document.getElementById("shayari-box").textContent = shayariList[index];
+      index = (index + 1) % shayariList.length;
+    }, 5000);
+  </script>
+</body>
+</html>
